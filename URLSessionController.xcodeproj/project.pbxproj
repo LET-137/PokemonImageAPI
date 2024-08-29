@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		C704167C2C7FCA28007DD410 /* URLSessionControllerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704167B2C7FCA28007DD410 /* URLSessionControllerApp.swift */; };
 		C704167E2C7FCA28007DD410 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704167D2C7FCA28007DD410 /* ContentView.swift */; };
-		C70416802C7FCA28007DD410 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704167F2C7FCA28007DD410 /* Item.swift */; };
 		C70416822C7FCA29007DD410 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70416812C7FCA29007DD410 /* Assets.xcassets */; };
 		C70416852C7FCA29007DD410 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70416842C7FCA29007DD410 /* Preview Assets.xcassets */; };
 		C704168F2C7FCA29007DD410 /* URLSessionControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704168E2C7FCA29007DD410 /* URLSessionControllerTests.swift */; };
 		C70416992C7FCA29007DD410 /* URLSessionControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70416982C7FCA29007DD410 /* URLSessionControllerUITests.swift */; };
 		C704169B2C7FCA29007DD410 /* URLSessionControllerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704169A2C7FCA29007DD410 /* URLSessionControllerUITestsLaunchTests.swift */; };
+		C70416AA2C7FCE4F007DD410 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70416A92C7FCE4F007DD410 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 		C70416782C7FCA28007DD410 /* URLSessionController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLSessionController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C704167B2C7FCA28007DD410 /* URLSessionControllerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionControllerApp.swift; sourceTree = "<group>"; };
 		C704167D2C7FCA28007DD410 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C704167F2C7FCA28007DD410 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C70416812C7FCA29007DD410 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C70416842C7FCA29007DD410 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C704168A2C7FCA29007DD410 /* URLSessionControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = URLSessionControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +45,7 @@
 		C70416942C7FCA29007DD410 /* URLSessionControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = URLSessionControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70416982C7FCA29007DD410 /* URLSessionControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionControllerUITests.swift; sourceTree = "<group>"; };
 		C704169A2C7FCA29007DD410 /* URLSessionControllerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionControllerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C70416A92C7FCE4F007DD410 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			children = (
 				C704167B2C7FCA28007DD410 /* URLSessionControllerApp.swift */,
 				C704167D2C7FCA28007DD410 /* ContentView.swift */,
-				C704167F2C7FCA28007DD410 /* Item.swift */,
+				C70416A92C7FCE4F007DD410 /* Model.swift */,
 				C70416812C7FCA29007DD410 /* Assets.xcassets */,
 				C70416832C7FCA29007DD410 /* Preview Content */,
 			);
@@ -260,8 +260,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C70416AA2C7FCE4F007DD410 /* Model.swift in Sources */,
 				C704167E2C7FCA28007DD410 /* ContentView.swift in Sources */,
-				C70416802C7FCA28007DD410 /* Item.swift in Sources */,
 				C704167C2C7FCA28007DD410 /* URLSessionControllerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

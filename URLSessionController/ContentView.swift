@@ -6,56 +6,64 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @EnvironmentObject var pokemonforms: PokemonForms
+    @EnvironmentObject var pokemonName: PokemonName
+    @State private var pokemonURLString: [String] = []
+    @State private var inputPokemonName: String = ""
+    
+    var columns = [GridItem(.adaptive(minimum: 100, maximum: 200))]
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        VStack {
+            ScrollView {
+                TextField("ポケモンの番号、または英語の名前",text: $inputPokemonName)
+                    .padding()
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
+                Button("ポケモンの画像を表示") {
+                    pokemonName.errorMessage = ""
+                    pokemonforms.pokemonURL = []
+                    pokemonURLString = []
+                    let url = "https://pokeapi.co/api/v2/pokemon/\(inputPokemonName)"
+                    
+                    Task {
+                        try await pokemonName.fetchFormsURL(url:url)
+                        try await pokemonforms.fetchPokemonImage(url: pokemonName.formsURL)
+                        DispatchQueue.main.async {
+                            pokemonforms.pokemonURL.forEach { url in
+                                pokemonURLString.append(url)
+                            }
+                        }
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                .fontWeight(.bold)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(5)
+                .padding()
+                 
+                Text(pokemonName.errorMessage)
+                
+                LazyVGrid(columns: columns,spacing: 10) {
+                    ForEach(pokemonURLString, id: \.self) { url in
+                        if let urlString = URL(string: url) {
+                            AsyncImage(url: urlString) { phase in
+                                if case .success(let image) = phase {
+                                    image.resizable().aspectRatio(contentMode: .fit).frame(width: 200, height: 200)
+                                } else if case .failure(_) = phase {
+                                    Image(systemName: "exclamationmark.triangle.fill").resizable().aspectRatio(contentMode: .fit).frame(width: 200, height: 200)
+                                } else {
+                                    ProgressView().frame(width: 200, height: 200)
+                                }
+                            }
+                        }
                     }
                 }
-            }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+                Spacer()
             }
         }
+        .padding()
     }
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
