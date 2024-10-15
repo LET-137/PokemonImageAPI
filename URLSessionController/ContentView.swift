@@ -5,6 +5,7 @@
 //  Created by 津本拓也 on 2024/08/29.
 //
 
+//clonetest
 import SwiftUI
 
 struct ContentView: View {
